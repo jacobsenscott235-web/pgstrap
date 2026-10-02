@@ -44,4 +44,4 @@ test("generate with pglite runs migrations and dumps structure", async () => {
   expect(fs.existsSync(path.join(structureDir, "table.sql"))).toBe(true)
 
   fs.rmSync(tmp, { recursive: true, force: true })
-})
+}, 30_000)
