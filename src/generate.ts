@@ -84,7 +84,7 @@ export const generate = async ({
         schemas,
       })
     } finally {
-      server.close()
+      await new Promise<void>((resolve) => server.close(() => resolve()))
       if (prevDbUrl === undefined) delete process.env.DATABASE_URL
       else process.env.DATABASE_URL = prevDbUrl
     }
